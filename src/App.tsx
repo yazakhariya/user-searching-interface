@@ -1,6 +1,6 @@
-// import HomePage from './pages/Home'
+import HomePage from './pages/Home'
 // import NotFound from './pages/NotFound'
-import SearchPage from './pages/Search/SearchPage'
+// import SearchPage from './pages/Search/SearchPage'
 import { GlobalStyle } from './theme/GlobalStyles/global.style'
 
 //TODO routing
@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <SearchPage />
-      {/* <HomePage /> */}
+      {/* <SearchPage /> */}
+      <HomePage />
       {/* <NotFound /> */}
     </>
   )

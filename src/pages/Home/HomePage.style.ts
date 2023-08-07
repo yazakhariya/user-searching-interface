@@ -10,9 +10,8 @@ export const PageWrapper = styled.div`
   background-color: #50a060;
 `
 
-export const PageHeader = styled.span`
-  color: black;
-  font-size: 30px;
+export const PageLogo = styled.div`
+  padding-bottom: 30px;
 `
 
 export const SubWrapper = styled.div`

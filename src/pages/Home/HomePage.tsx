@@ -1,4 +1,4 @@
-// import * as React from 'react'
+import logo from '/src/assets/icons/logo.svg'
 import UiInput from 'src/components/UiInput'
 import * as S from './HomePage.style'
 import UiButton from 'src/components/UiButton/UiButton'
@@ -6,7 +6,7 @@ import UiButton from 'src/components/UiButton/UiButton'
 const HomePage = () => {
   return (
     <S.PageWrapper>
-      <S.PageHeader>Gitting your interests...</S.PageHeader>
+      <S.PageLogo><img width="270px" src={logo} /></S.PageLogo>
       <S.SubWrapper>
         <UiInput />
         <UiButton />
