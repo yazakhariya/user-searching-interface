@@ -4,7 +4,7 @@ import loader from '/src/assets/icons/loader.svg'
 const NotFound = () => {
   return (
     <S.PageWrapper>
-        <img src={loader}/>
+      <img src={loader} />
     </S.PageWrapper>
   )
 }

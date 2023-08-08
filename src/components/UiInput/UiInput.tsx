@@ -1,9 +1,12 @@
 import * as S from './UiInput.style'
 
-//todo searching
+type Props = {
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
-const UiInput = () => {
-  return <S.Input placeholder='Введите поисковый запрос...' type='search' />
+const UiInput = ({ value, onChange }: Props) => {
+  return <S.Input value={value} onChange={onChange} placeholder='Введите поисковый запрос...' type='search' />
 }
 
 export default UiInput
