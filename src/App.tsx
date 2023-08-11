@@ -1,11 +1,8 @@
-import './App.css'
+import RoutesProvider from './router'
 
 function App() {
-
   return (
-    <>
-      
-    </>
+    <RoutesProvider />
   )
 }
 
