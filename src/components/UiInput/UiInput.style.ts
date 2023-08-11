@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const Input = styled.input`
   display: block;
-  width: 400px;
+  width: 600px;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
   font-family: inherit;

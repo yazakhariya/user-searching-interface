@@ -5,10 +5,9 @@ export const Button = styled.button`
   border: none;
 
   width: 130px;
-  height: 40px;
+  height: 20px;
   color: #fff;
   border-radius: 5px;
-  padding: 10px 25px;
   font-weight: 500;
   background: transparent;
   cursor: pointer;

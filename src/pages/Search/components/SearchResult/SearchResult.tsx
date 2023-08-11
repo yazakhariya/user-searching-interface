@@ -1,50 +1,55 @@
 import * as React from 'react'
 import * as S from './SearchResult.style'
 import { Props, Result } from './types'
+import UiModal from 'src/components/UiModal/UiModal'
+import { Link } from 'react-router-dom'
+import { useGetUserByNameQuery } from 'src/api/api'
 
-//TODO: 1. пагинация; 2.типизация; 3.показ инф по клику на айтем.
+//TODO: 1. пагинация;
 
-const SearchResult = ({ username }: Props) => {
-  const [results, setResults] = React.useState(Array(0))
-  const [loading, isLoading] = React.useState<boolean>(false)
+const SearchResult = ({ username, order }: Props) => {
+  const {data, isLoading} = useGetUserByNameQuery({username, order})
 
-  const baseUrl = `https://api.github.com/search/users?q=`
+  const [userUrl, setUserUrl] = React.useState<string>('')
+  const [userModal, setUserModal] = React.useState<boolean | null>(null)
+ 
 
-  React.useEffect(() => {
-    isLoading(true)
-    fetch(`${baseUrl}${username}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'text/plain',
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        isLoading(false)
-        setResults(data)
-      })
-      .catch((err) => {
-        isLoading(false)
-        console.log(err.message)
-      })
-  }, [baseUrl, username])
-
-  console.log(results)
+  const handleUserClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
+    setUserModal(true)
+    const user = data?.items?.filter(
+      (item: { login: string }) =>
+        item.login === (event.target as HTMLElement).textContent
+    )
+    setUserUrl(user[0].html_url)
+  }
+  
+  const userUrlContent = userModal ? (
+    <UiModal closeModalFn={() => setUserModal(null)}>
+      <S.UserContentWrapper>
+        <span>С профилем данного пользавателя вы ознакомитесь, перейдя по ссылке: <Link to={userUrl}>{userUrl}</Link></span>
+      </S.UserContentWrapper>
+    </UiModal>
+  ) : null
 
   return (
     <S.ResultContainer>
-      {loading ? (
+      {isLoading ? (
         <S.Loading>Ищу...</S.Loading>
       ) : (
-        results.items
-          ?.filter((item: { login: string }) =>
+        data?.items?.filter((item: { login: string }) =>
             item.login.toLowerCase().includes(username.toLowerCase())
           )
           .map((result: Result, index: number) => {
-            return <S.Item key={index}><S.Avatar src={result.avatar_url} />{result.login}</S.Item>
+            return (
+              <S.Item onClick={(event) => handleUserClick(event)} key={index}>
+                <S.Avatar src={result.avatar_url} />
+                {result.login}
+              </S.Item>
+            )
           })
       )}
+      {userUrlContent ? userUrlContent : null}
     </S.ResultContainer>
   )
 }

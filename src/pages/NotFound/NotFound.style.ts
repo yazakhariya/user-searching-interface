@@ -7,6 +7,5 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #50a060;
 `
 

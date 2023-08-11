@@ -34,3 +34,14 @@ export const Avatar = styled.img`
   border-radius: 15px;
   border: solid 1px #015e25;
 `
+
+export const UserContentWrapper = styled.div`
+  border-radius: 12px;
+  background-color: #e6eede;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 36px 42px 44px;
+  position: relative;
+`

@@ -3,11 +3,11 @@ import UiInput from 'src/components/UiInput'
 import * as S from './SearchPage.style'
 import UiButton from 'src/components/UiButton/UiButton'
 import logo from '/src/assets/icons/logo.svg'
-// import NotFound from '../NotFound'
 import SearchResult from './components/SearchResult'
 
 const SearchPage = () => {
   const [searchTerms, setSearchTerms] = React.useState<string>('')
+  const [order, setOrder] = React.useState<string>('')
   return (
     <S.PageWrapper>
       <S.SearchContainer>
@@ -19,13 +19,14 @@ const SearchPage = () => {
             value={searchTerms}
             onChange={(e) => setSearchTerms(e.target.value)}
           />
-          <UiButton />
+          <UiButton children='Больше repos' onClick={() => setOrder('desc')} />
+          <UiButton children='Меньше repos' onClick={() => setOrder('asc')}/>
         </S.SearchBarWrapper>
       </S.SearchContainer>
       {searchTerms === '' ? (
         <S.EmptyResultsMessage>Никаких результатов...</S.EmptyResultsMessage>
       ) : (
-        <SearchResult username={searchTerms} />
+        <SearchResult order={order} username={searchTerms} />
       )}
     </S.PageWrapper>
   )

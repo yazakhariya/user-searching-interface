@@ -4,7 +4,6 @@ export const PageWrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   display: flex;
-  background-color: #50a060;
   align-items: flex-start;
   flex-direction: column;
 `
@@ -21,6 +20,8 @@ export const SearchBarWrapper = styled.div`
   display: flex;
   gap: 5px;
   padding-top: 40px;
+  flex-direction: column;
+  align-items: flex-end;
 `
 
 export const EmptyResultsMessage = styled.h2`
