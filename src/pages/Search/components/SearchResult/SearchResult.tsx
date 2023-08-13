@@ -42,7 +42,7 @@ const SearchResult = ({ username, order }: Props) => {
 
   return (
     <S.ResultContainer>
-      {data && error ? (
+      {data && !error ? (
         <S.Pagination>
           <S.Img
             type="image"
@@ -59,7 +59,7 @@ const SearchResult = ({ username, order }: Props) => {
           />
         </S.Pagination>
       ) : null}
-      {isLoading ? (
+      {isLoading || error ? (
         <S.Loading>Ищу...</S.Loading>
       ) : (
         data?.items
@@ -77,7 +77,7 @@ const SearchResult = ({ username, order }: Props) => {
       )}
       {error && 'status' in error ? (
         <S.Error>
-          Кажется, возникла ошибка - {error.status}. Попробуйте позже.
+          К сожалению, возникла ошибка {error.status} - попробуйте позже
         </S.Error>
       ) : null}
       {userUrlContent ? userUrlContent : null}

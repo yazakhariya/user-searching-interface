@@ -65,7 +65,7 @@ export const PageNumber = styled.span`
   justify-content: center;
 `
 
-export const Error = styled.span`
+export const Error = styled.h3`
   padding: 50px 50px;
   color: #015e25;
 `
