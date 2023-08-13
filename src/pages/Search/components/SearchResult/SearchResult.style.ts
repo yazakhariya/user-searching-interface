@@ -11,7 +11,7 @@ export const Item = styled.div`
   color: #015e25;
   font-weight: bold;
   font-size: 20px;
-  border: solid 1px #015e25;
+  border: solid 1px #000000;
   border-radius: 15px;
   padding: 10px;
   display: flex;
@@ -32,7 +32,6 @@ export const Loading = styled.h2`
 export const Avatar = styled.img`
   width: 40px;
   border-radius: 15px;
-  border: solid 1px #015e25;
 `
 
 export const UserContentWrapper = styled.div`
@@ -44,4 +43,29 @@ export const UserContentWrapper = styled.div`
   gap: 30px;
   padding: 36px 42px 44px;
   position: relative;
+`
+
+export const Pagination = styled.div`
+  padding: 10px 50px;
+  display: flex;
+  gap: 5px;
+`
+
+export const Img = styled.input`
+  width: 25px;
+`
+
+export const PageNumber = styled.span`
+  width: 50px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Error = styled.h3`
+  padding: 50px 50px;
+  color: #015e25;
 `

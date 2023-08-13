@@ -4,9 +4,8 @@ export const Button = styled.button`
   outline: none;
   border: none;
 
-  width: 130px;
-  height: 20px;
-  color: #fff;
+  width: fit-content;
+  color: #ffffff;
   border-radius: 5px;
   font-weight: 500;
   background: transparent;
@@ -14,6 +13,7 @@ export const Button = styled.button`
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
+  padding: 5px 24px;
   box-shadow:
     inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1),
