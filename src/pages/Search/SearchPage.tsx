@@ -7,7 +7,8 @@ import SearchResult from './components/SearchResult'
 
 const SearchPage = () => {
   const [searchTerms, setSearchTerms] = React.useState<string>('')
-  const [order, setOrder] = React.useState<string>('')
+  const [order, setOrder] = React.useState<string>('desc')
+
   return (
     <S.PageWrapper>
       <S.SearchContainer>
@@ -19,8 +20,8 @@ const SearchPage = () => {
             value={searchTerms}
             onChange={(e) => setSearchTerms(e.target.value)}
           />
-          <UiButton children='Больше repos' onClick={() => setOrder('desc')} />
-          <UiButton children='Меньше repos' onClick={() => setOrder('asc')}/>
+          <UiButton children="Больше repos" onClick={() => setOrder('desc')} />
+          <UiButton children="Меньше repos" onClick={() => setOrder('asc')} />
         </S.SearchBarWrapper>
       </S.SearchContainer>
       {searchTerms === '' ? (
