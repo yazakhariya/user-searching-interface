@@ -19,6 +19,7 @@ const SearchPage = () => {
           <UiInput
             value={searchTerms}
             onChange={(e) => setSearchTerms(e.target.value)}
+            placeholder="Введите поисковый запрос..."
           />
           <UiButton children="Больше repos" onClick={() => setOrder('desc')} />
           <UiButton children="Меньше repos" onClick={() => setOrder('asc')} />
