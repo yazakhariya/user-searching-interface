@@ -3,7 +3,7 @@ import cross from 'src/assets/icons/cross.svg'
 
 type Props = {
   children: React.ReactNode
-  closeModalFn: () => void
+  closeModalFn?: () => void
 }
 
 const UiModal = ({ children, closeModalFn }: Props) => {
