@@ -9,6 +9,7 @@ export type Items = {
 }
 
 export type Result = {
+  length: number
   html_url: string
   login: string
   avatar_url: string
