@@ -69,3 +69,8 @@ export const Error = styled.h3`
   padding: 50px 50px;
   color: #015e25;
 `
+
+export const EmptyResultsMessage = styled.h2`
+  padding: 50px 50px;
+  color: #015e25;
+`

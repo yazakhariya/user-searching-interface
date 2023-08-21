@@ -5,7 +5,15 @@ export const gitApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.github.com/search/' }),
   endpoints: (builder) => ({
     getUserByName: builder.query({
-      query: ({username, order, page}) => `users?q=${username}&sort=repositories&order=${order}&page=${page}`,
+      query: ({ username, order, page }) => {
+        return {
+          url: `users?q=${username}&sort=repositories&order=${order}&page=${page}`,
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`,
+          },
+        }
+      },
     }),
   }),
 })

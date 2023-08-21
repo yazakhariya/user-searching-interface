@@ -10,7 +10,7 @@ import next from 'src/assets/icons/next.svg'
 const SearchResult = ({ username, order }: Props) => {
   const [page, setPage] = React.useState<number>(1)
 
-  const { data, error, isLoading} = useGetUserByNameQuery({
+  const { data, error, isLoading } = useGetUserByNameQuery({
     username,
     order,
     page,
@@ -22,7 +22,7 @@ const SearchResult = ({ username, order }: Props) => {
   const handleUserClick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation()
     setUserModal(true)
-    const user = data?.items?.filter(
+    const user = data.items.filter(
       (item: { login: string }) =>
         item.login === (event.target as HTMLElement).textContent
     )
@@ -55,16 +55,16 @@ const SearchResult = ({ username, order }: Props) => {
             type="image"
             src={next}
             onClick={() => setPage(page + 1)}
-            disabled={page === data.length}
+            disabled={page === data.length || (data.total_count === 1 || data.total_count === 0)}
           />
         </S.Pagination>
       ) : null}
-      {isLoading || error ? (
+      {isLoading ? (
         <S.Loading>Ищу...</S.Loading>
-      ) : (
-        data?.items
-          ?.filter((item: { login: string }) =>
-            item.login.toLowerCase().includes(username.toLowerCase())
+      ) : data?.items?.length !== 0 ? (
+        data.items
+          .filter((item: { login: string }) =>
+            item.login.toLowerCase()
           )
           .map((result: Result, index: number) => {
             return (
@@ -74,6 +74,8 @@ const SearchResult = ({ username, order }: Props) => {
               </S.Item>
             )
           })
+      ) : (
+        <S.EmptyResultsMessage>Ничего не найдено...</S.EmptyResultsMessage>
       )}
       {error && 'status' in error ? (
         <S.Error>
