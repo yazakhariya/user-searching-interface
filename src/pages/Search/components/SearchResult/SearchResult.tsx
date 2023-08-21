@@ -61,7 +61,7 @@ const SearchResult = ({ username, order }: Props) => {
       ) : null}
       {isLoading ? (
         <S.Loading>Ищу...</S.Loading>
-      ) : data.items.length !== 0 ? (
+      ) : data?.items?.length !== 0 ? (
         data.items
           .filter((item: { login: string }) =>
             item.login.toLowerCase()
